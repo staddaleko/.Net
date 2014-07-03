@@ -1,0 +1,9 @@
+C:\Jacek\Dzien20\S1(WieleDoWielu)\bin\Debug\S1(WieleDoWielu).exe.config
+C:\Jacek\Dzien20\S1(WieleDoWielu)\bin\Debug\S1(WieleDoWielu).exe
+C:\Jacek\Dzien20\S1(WieleDoWielu)\bin\Debug\S1(WieleDoWielu).pdb
+C:\Jacek\Dzien20\S1(WieleDoWielu)\obj\Debug\S1(WieleDoWielu).csprojResolveAssemblyReference.cache
+C:\Jacek\Dzien20\S1(WieleDoWielu)\obj\Debug\S1_WieleDoWielu_.Form1.resources
+C:\Jacek\Dzien20\S1(WieleDoWielu)\obj\Debug\S1_WieleDoWielu_.Properties.Resources.resources
+C:\Jacek\Dzien20\S1(WieleDoWielu)\obj\Debug\S1(WieleDoWielu).csproj.GenerateResource.Cache
+C:\Jacek\Dzien20\S1(WieleDoWielu)\obj\Debug\S1(WieleDoWielu).exe
+C:\Jacek\Dzien20\S1(WieleDoWielu)\obj\Debug\S1(WieleDoWielu).pdb
