@@ -1,0 +1,84 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity;
+using System.Globalization;
+using System.Web.Security;
+
+namespace S1.Models
+{
+    public class Autor
+    {
+        [Key]
+        public int Id_A { set; get; }
+        [Required]
+        public string Imie { set; get; }
+        [Required]
+        public string Nazwisko { set; get; }
+        [Required]
+        public DateTime Data_ur { set; get; }
+        public virtual KsiazkaAutor Ksiazki { set; get; }
+    }
+
+    public class Ksiazka
+    {
+        [Key]
+        public int ID_K { set; get; }
+        [Required]
+        public string Tytul { set; get; }
+        [Required]
+        public int Rok_w { set; get; }
+        [Required]
+        public string Opis { set; get; }
+        public virtual KsiazkaAutor Autorzy { set; get; }
+    }
+   
+    public class KsiazkaAutor
+    {
+        [Required]
+        public virtual ICollection<Autor> Id_a { set; get; }
+        [Required]
+        public virtual ICollection<Ksiazka> Id_k { set; get; }
+    }
+
+    public class Autorzy
+    {
+        public int Lp { get;}
+        [Key]
+        public int Id_A { set; get; }
+        [Required]
+        public string Imie { set; get; }
+        [Required]
+        public string Nazwisko { set; get; }
+        [Required]
+        public DateTime Data_ur { set; get; }
+        
+    }
+
+    public class Ksiazki
+    {
+        public int Lp { get;}
+        [Key]
+        public int ID_K { set; get; }
+        [Required]
+        public string Tytul { set; get; }
+        [Required]
+        public int Rok_w { set; get; }
+        [Required]
+        public string Opis { set; get; }
+    }
+    public class MyDataContext : DbContext
+    {
+        public DbSet<Autor> Autorzy { set; get; }
+        public DbSet<Ksiazka> Ksiazki { set; get; }
+        public DbSet<KsiazkaAutor> AsocjacjaKsiazkaAutor { set; get; }
+        public DbSet<Autorzy> VAutorzy { set; get; }
+        public DbSet<Ksiazki> VKsiazki { set; get; }
+    }
+
+}
