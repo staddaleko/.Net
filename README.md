@@ -1,6 +1,7 @@
-.Net
 
+SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
 
@@ -12,7 +13,7 @@ RETURNS TABLE
 AS
 RETURN 
 (
-	SELECT dbo.Autor.Imie, dbo.Autor.Nazwisko, dbo.Autor.Data_ur
+	SELECT ROW_NUMBER() OVER(ORDER BY dbo.Autor.Imie DESC) AS Lp, dbo.Autor.Imie, dbo.Autor.Nazwisko, dbo.Autor.Data_ur
 	FROM   dbo.Autor
 	INNER JOIN dbo.KsiazkaAutor ON dbo.Autor.Id_A = dbo.KsiazkaAutor.Id_a
 	WHERE dbo.KsiazkaAutor.Id_k = @Identyfikator_K
