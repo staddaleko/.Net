@@ -19,10 +19,15 @@ BEGIN
 	SET NOCOUNT ON;
 	Declare @Identyfikator_A int
 	Set @Identyfikator_A = (Select Max(dbo.Autor.Id_A) From dbo.Autor)
+	--Declare @Imie varchar(30)
+	--Set @Imie = (Select Imie From dbo.Autor Where Id_A = (Select Max(dbo.Autor.Id_A) From dbo.Autor))
+	--Declare @Nazwisko varchar(30)
+	--Set @Nazwisko = (Select Nazwisko From dbo.Autor Where Id_A = (Select Max(dbo.Autor.Id_A) From dbo.Autor))
 	Declare @Nazwa_widoku varchar(200)
 	Set @Nazwa_widoku = 'Autor_Ksiazki_' + (Select Cast(@Identyfikator_A As varchar(20)))
+	--Set @Nazwa_widoku = @Imie + '_' + @Nazwisko
 	Declare @SQL varchar(max)
-	Set @SQL = 'Create View' + @Nazwa_widoku + ' As Select Lp, Tytul, Opis, Rok_w
+	Set @SQL = 'Create View ' + @Nazwa_widoku + ' As Select Lp, Tytul, Opis, Rok_w
 	From dbo.F_AutorKsiazki('+ (Select Cast(@Identyfikator_A As varchar(20)))+')'
 	Execute (@SQL)
 	
