@@ -1,0 +1,31 @@
+USE [DB1]
+GO
+/****** Object:  Trigger [dbo].[T_Ksiazka_Autorzy]    Script Date: 2014-07-14 09:34:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+ALTER TRIGGER [dbo].[T_Ksiazka_Autorzy]
+   ON  [dbo].[Ksiazka]
+   AFTER Insert
+AS 
+BEGIN
+	
+	SET NOCOUNT ON;
+
+	Declare @Identyfikator_K int
+	Set @Identyfikator_K = (Select Max(dbo.Ksiazka.Id_K) From dbo.Ksiazka)
+	
+	Declare @Nazwa_widoku varchar(200)
+	Set @Nazwa_widoku = 'Ksiazka_Autorzy_' + (Select Cast(@Identyfikator_K As varchar(20)))
+	
+	Declare @SQL varchar(max)
+	Set @SQL = 'Create View ' + @Nazwa_widoku + ' As Select Lp, Imie, Nazwisko, Data_ur
+	From dbo.F_KsiazkaAutorzy('+ (Select Cast(@Identyfikator_K As varchar(20)))+')'
+	Execute (@SQL)
+
+    
+
+END
